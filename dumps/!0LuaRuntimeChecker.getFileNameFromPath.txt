@@ -1,0 +1,7 @@
+-- BYTECODE -- 0x00399890:19-21
+0001    GGET     1   0      ; "string"
+0002    TGETS    1   1   1  ; "match"
+0003    MOV      2   0
+0004    KSTR     3   2      ; ".+\(.-)$"
+0005    CALLT    1   3
+
