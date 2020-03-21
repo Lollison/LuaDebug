@@ -86,7 +86,7 @@ local function buildProxyFuncs()
     return {}
 end
 
-local code = io.open(getFileNameFromPath(arg[1]), "rb"):read("*a"); 
+local code = io.open(arg[1], "rb"):read("*a"); 
 local scriptInit = loadstring(code) 
 
 if scriptInit ~= nil then 
@@ -174,7 +174,7 @@ if scriptInit ~= nil then
             end
         elseif type(value) == "table" then
             print("\x1b[33m[META] \x1b[37mПолучение информации о таблице", "\x1b[36m")
-            print(ins(value))
+            print(ins(value)) -- ку ку
         end
 
         io.read()
@@ -188,7 +188,7 @@ if scriptInit ~= nil then
         local fName = string.match(error, "attempt to call global '(.-)'")
         if fName then
             print("\x1b[33m[META] \x1b[37mНевалидный вызов функции. Установка патча и перезапуск скрипта..", "\x1b[36m")
-            metatab[fName] = function() print("\x1b[35m[SYSTEM] \x1b[37mВызвана временная функция "..fName.."\x1b[36m")end
+            metatab[fName] = function() print("\x1b[35m[SYSTEM] \x1b[37mВызвана временная функция "..fName.."\x1b[36m") end
             setfenv(scriptInit, metatab)
             xpcall(scriptInit, debug.getinfo(1, "f").func)
         end
